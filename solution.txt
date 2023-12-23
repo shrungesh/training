@@ -1,0 +1,28 @@
+ERROR 1: failed to create cluster: error reading file: open kind-config/config.yaml: no such file or directory
+Solution1 : run below command and  and this error is resolved
+sudo kind create cluster --name=qa-cluster --config=config.yaml
+
+Error 2: The adservice service pod is going in "ImagePullBackOff" state.
+Solution: The adservice YAML manifest had a typo in image version, after updating the image repository the error disappeared.
+Similarly this issue was for other services and steps resolved the issue.
+
+Error 3: redis pod status was showing pending
+Solution3: worker name corrected and issue is resolved
+
+Error4 : port forwarding
+sudo kubectl port-forward frontend-6b4d599649-2xg6n 8080:80
+Unable to listen on port 8080: Listeners failed to create with the following errors: [unable to create listener: Error listen tcp4 127.0.0.1:8080: bind: address already in use unable to create listener: Error listen tcp6 [::1]:8080: bind: address already in use]
+error: unable to listen on any of the requested ports: [{8080 80}
+solution4: executed correct command
+kubectl port-forward pod/frontend-66b6f55f75-sskkb 80:8080
+
+Error5: 500 Internal server error
+Solution : There was a typo in port number of frontend yaml file. Post correcting the port website was up and running
+
+Error6: Error on Place orderbutton click
+rpc error: code = Unavailable desc = all SubConns are in TransientFailure, latest connection error: connection error: desc = "transport: Error while dialing dial tcp 10.96.116.79:5050: connect: connection refused"
+failed to complete the order
+solution6: The "checkout" YAML manifest had a typo in image value, after updating the image repository the error disappeared.
+
+Error7: syntax error in load generator yaml file
+solution7: removed "---" symbols and validated the file in yaml validator.
